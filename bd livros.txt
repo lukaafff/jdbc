@@ -1,0 +1,64 @@
+use livros;
+
+CREATE TABLE Livro (
+    ID INT PRIMARY KEY,
+    Titulo VARCHAR(255),
+    Autor VARCHAR(255),
+    Ano_Publicacao INT,
+    Genero VARCHAR(50),
+    Numero_Paginas INT
+);
+
+CREATE TABLE Usuario (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(255),
+    Endereco VARCHAR(255),
+    Numero_Telefone VARCHAR(20),
+    Email VARCHAR(255)
+);
+
+CREATE TABLE Emprestimo (
+    ID INT PRIMARY KEY,
+    ID_Livro INT,
+    ID_Usuario INT,
+    Data_Emprestimo DATE,
+    Data_Devolucao_Prevista DATE,
+    FOREIGN KEY (ID_Livro) REFERENCES Livro(ID),
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID)
+);
+
+INSERT INTO Livro (ID, Titulo, Autor, Ano_Publicacao, Genero, Numero_Paginas)
+VALUES 
+(1, 'Dom Quixote', 'Miguel de Cervantes', 1605, 'Romance', 863),
+(2, '1984', 'George Orwell', 1949, 'Ficção Científica', 328),
+(3, 'Moby Dick', 'Herman Melville', 1851, 'Aventura', 635),
+(4, 'Orgulho e Preconceito', 'Jane Austen', 1813, 'Romance', 279);
+
+INSERT INTO Usuario (ID, Nome, Endereco, Numero_Telefone, Email)
+VALUES 
+(1, 'João Silva', 'Rua A, 123', '123-456-7890', 'joao.silva@email.com'),
+(2, 'Maria Santos', 'Rua B, 456', '987-654-3210', 'maria.santos@email.com'),
+(3, 'Carlos Oliveira', 'Rua C, 789', '111-222-3333', 'carlos.oliveira@email.com');
+
+INSERT INTO Emprestimo (ID, ID_Livro, ID_Usuario, Data_Emprestimo, Data_Devolucao_Prevista)
+VALUES 
+(1, 1, 1, '2023-10-17', '2023-10-24'),
+(2, 2, 2, '2023-10-18', '2023-10-25'),
+(3, 3, 3, '2023-10-19', '2023-10-26');
+
+SELECT * FROM Livro;
+SELECT * FROM Usuario;
+SELECT * FROM Emprestimo;
+
+SELECT E.ID, L.Titulo AS Livro, U.Nome AS Usuario, E.Data_Emprestimo, E.Data_Devolucao_Prevista
+FROM Emprestimo E
+JOIN Livro L ON E.ID_Livro = L.ID
+JOIN Usuario U ON E.ID_Usuario = U.ID;
+
+SELECT L.Titulo, L.Autor, E.Data_Emprestimo, E.Data_Devolucao_Prevista
+FROM Emprestimo E
+JOIN Livro L ON E.ID_Livro = L.ID
+WHERE E.ID_Usuario = 1;
+
+ALTER TABLE livro
+MODIFY  ID INT AUTO_INCREMENT;
