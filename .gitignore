@@ -1,0 +1,27 @@
+# Arquivos e diretórios específicos do NetBeans
+build/
+dist/
+nbproject/private/
+nbproject/Makefile-*.mk
+nbproject/Package-*.bash
+nbproject/configs/
+
+# Outros arquivos e diretórios gerados automaticamente
+*.log
+*.tmp
+*.tmp.*
+log.txt
+.idea/
+
+# Arquivos de configuração específicos do NetBeans
+nb-configuration.xml
+
+# Outros arquivos de configuração específicos do NetBeans
+nbactions.xml
+nb-ide.xml
+
+# Arquivos gerados pelo Ant
+build.xml
+
+# Diretório de saída de artefatos do Ant
+build/classes/
