@@ -42,7 +42,7 @@ Inicie o NetBeans e abra seu projeto Java existente ou crie um novo projeto, se 
 ## Passos para Execução
 ### Clone o Repositório:
 
-```git clone https://github.com/seu-usuario/seu-projeto.git```
+```git clone https://github.com/lukaafff/jdbc```
 
 ### Abra o NetBeans:
 
